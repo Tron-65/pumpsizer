@@ -1,0 +1,6 @@
+{
+  "name": "HydroFlow - Pump & Hydraulic Sizing Suite",
+  "description": "Professional hydraulic engineering suite for pump sizing, TDH calculation, friction loss modeling, NPSH analysis, interactive pump curves, and client-ready engineering PDF reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
