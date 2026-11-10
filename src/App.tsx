@@ -18,6 +18,7 @@ import { PdfReportModal } from './components/PdfReportModal';
 import { ProjectManagerModal } from './components/ProjectManagerModal';
 import { CloudCollaborationModal } from './components/CloudCollaborationModal';
 import { BoreholeSizingModal } from './components/BoreholeSizingModal';
+import { RoiEnergyTab } from './components/RoiEnergyTab';
 import { UNIT_LABELS, flowToDisplay, headToDisplay, powerToDisplay } from './utils/units';
 import {
   Activity,
@@ -32,6 +33,7 @@ import {
   ShieldCheck,
   Zap,
   Droplets,
+  Coins,
 } from 'lucide-react';
 
 const STORAGE_KEY_CURRENT = 'hydroflow_current_project';
@@ -87,7 +89,7 @@ export default function App() {
   });
 
   // Active view tab
-  const [activeTab, setActiveTab] = useState<'sizing' | 'hgl' | 'formulas' | 'bom'>('sizing');
+  const [activeTab, setActiveTab] = useState<'sizing' | 'hgl' | 'formulas' | 'bom' | 'roi'>('sizing');
 
   // Modals state
   const [isPumpModalOpen, setIsPumpModalOpen] = useState(false);
@@ -211,6 +213,7 @@ export default function App() {
               { id: 'hgl', label: 'Hydraulic Grade Line (HGL)', icon: Calculator },
               { id: 'formulas', label: 'Engineering Calculations & Proofs', icon: Zap },
               { id: 'bom', label: 'Fittings & Material Schedule', icon: FileSpreadsheet },
+              { id: 'roi', label: 'ROI & Energy', icon: Coins },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -557,6 +560,11 @@ export default function App() {
               </div>
             </div>
           </div>
+        )}
+
+        {/* Tab 5: ROI & ENERGY SAVINGS ANALYSIS */}
+        {activeTab === 'roi' && (
+          <RoiEnergyTab project={project} results={results} onUpdateProject={setProject} />
         )}
       </main>
 
